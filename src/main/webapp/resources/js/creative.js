@@ -30,8 +30,10 @@
   var navbarCollapse = function() {
     if ($("#mainNav").offset().top > 100) {
       $("#mainNav").addClass("navbar-scrolled");
+      $("#letterLogo").attr("src", "/resources/img/homeLetterLogo2.png")
     } else {
       $("#mainNav").removeClass("navbar-scrolled");
+      $("#letterLogo").attr("src", "/resources/img/homeLetterLogo.png")
     }
   };
   // Collapse now if page is not at top
