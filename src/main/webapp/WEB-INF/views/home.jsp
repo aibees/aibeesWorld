@@ -1,7 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
 
@@ -50,6 +50,9 @@
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="loginForm.do">Login</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -60,12 +63,12 @@
     <div class="container h-100">
       <div class="row h-100 align-items-center justify-content-center text-center">
         <div class="col-lg-10 align-self-end">
-          <h1 class="text-uppercase text-white font-weight-bold">Aibees World</h1>
+          <h1 class="text-uppercase text-white font-weight-bold">Welcome to My World</h1>
           <hr class="divider my-4">
         </div>
         <div class="col-lg-8 align-self-baseline">
-          <p class="text-white-75 font-weight-light mb-5">Grow little by little with constant effort.<br/> I really love "All_Silver618"</p>
-          <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>
+          <p class="text-white-75 font-weight-light mb-5">Grow little by little with constant effort.</p>
+          <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">사이트 둘러보기</a>
         </div>
       </div>
     </div>
@@ -76,7 +79,7 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-8 text-center">
-          <h2 class="text-white mt-0">We've got what you need!</h2>
+          <h2 class="text-white mt-0">저를 소개합니다.</h2>
           <hr class="divider light my-4">
           <p class="text-white-50 mb-4">Start Bootstrap has everything you need to get your new website up and running in no time! Choose one of our open source, free to download, and easy to use themes! No strings attached!</p>
           <a class="btn btn-light btn-xl js-scroll-trigger" href="#services">Get Started!</a>
@@ -230,14 +233,18 @@
       <div class="row">
         <div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
           <i class="fas fa-envelope fa-3x mb-3 text-muted"></i>
-          <div>aibees1129@gmail.com</div>
+          <div style="color:#cdcdcd;">aibees1129@gmail.com</div>
         </div>
         <div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
-          <i class="fas fa-blog fa-3x mb-3 text-muted"></i>
+          <a href="http://aibees.github.io">
+          	<i class="fas fa-blog fa-3x mb-3 text-muted"></i>
+          </a>
           <a class="d-block" href="http://aibees.github.io">Aibees Dev Blog</a>
         </div>
         <div class="col-lg-4 mr-auto text-center">
-          <i class="fab fa-github fa-3x mb-3 text-muted"></i>
+          <a href="https://github.com/aibees">
+          	<i class="fab fa-github fa-3x mb-3 text-muted"></i>
+          </a>
           <a class="d-block" href="https://github.com/aibees">aibees@github.com</a>
         </div>
       </div>
