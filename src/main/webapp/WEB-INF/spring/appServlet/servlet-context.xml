@@ -27,5 +27,17 @@
 	<context:component-scan base-package="com.aibees.world.**" />
 	
 	<!-- add intercepter bean in here -->
+	<beans:bean id="SessionCheck" class="com.aibees.world.user.util.SessionCheckInterceptor" />
+	<beans:bean id="login" class="com.aibees.world.user.util.LoginInterceptor" />
 	
+	<interceptors>
+		<interceptor>
+			<mapping path="/login.do" />
+			<beans:ref bean="login"/>
+		</interceptor>
+		<!-- <interceptor>
+			<mapping path="/login.do"/>
+			<beans:ref bean="SessionCheck"/>
+		</interceptor> -->
+	</interceptors>
 </beans:beans>

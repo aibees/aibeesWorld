@@ -1694,7 +1694,7 @@ $.magnificPopup.registerModule('gallery', {
 
 			_wrapClasses += ' mfp-gallery';
 
-			_mfpOn(OPEN_EVENT+ns, function() {
+/*			_mfpOn(OPEN_EVENT+ns, function() {
 
 				if(gSt.navigateByImgClick) {
 					mfp.wrap.on('click'+ns, '.mfp-img', function() {
@@ -1712,7 +1712,7 @@ $.magnificPopup.registerModule('gallery', {
 						mfp.next();
 					}
 				});
-			});
+			});*/
 
 			_mfpOn('UpdateStatus'+ns, function(e, data) {
 				if(data.text) {

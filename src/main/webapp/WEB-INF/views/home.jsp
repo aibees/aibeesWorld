@@ -23,7 +23,7 @@
   <link href="resources/vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
 
   <!-- Theme CSS - Includes Bootstrap -->
-  <link href="resources/css/creative.min.css" rel="stylesheet">
+  <link href="resources/css/creative.css" rel="stylesheet">
 
 </head>
 
@@ -64,7 +64,7 @@
       <div class="row h-100 align-items-center justify-content-center text-center">
         <div class="col-lg-10 align-self-end">
           <h1 class="text-uppercase text-white font-weight-bold">Welcome to My World</h1>
-          <hr class="divider my-4">
+          <br/>
         </div>
         <div class="col-lg-8 align-self-baseline">
           <p class="text-white-75 font-weight-light mb-5">Grow little by little with constant effort.</p>
@@ -82,7 +82,7 @@
           <h2 class="text-white mt-0">저를 소개합니다.</h2>
           <hr class="divider light my-4">
           <p class="text-white-50 mb-4">Start Bootstrap has everything you need to get your new website up and running in no time! Choose one of our open source, free to download, and easy to use themes! No strings attached!</p>
-          <a class="btn btn-light btn-xl js-scroll-trigger" href="#services">Get Started!</a>
+          <a class="btn btn-light btn-xl js-scroll-trigger" href="https://aibees.github.io/about">GO TO ABOUT</a>
         </div>
       </div>
     </div>
@@ -91,14 +91,13 @@
   <!-- Services Section -->
   <section class="page-section" id="services">
     <div class="container">
-      <h2 class="text-center mt-0">At Your Service</h2>
-      <hr class="divider my-4">
+      <h2 class="text-center mt-0">AIBEES 서비스!</h2>
       <div class="row">
         <div class="col-lg-3 col-md-6 text-center">
           <div class="mt-5">
             <i class="fas fa-4x fa-gem text-primary mb-4"></i>
-            <h3 class="h4 mb-2">Sturdy Themes</h3>
-            <p class="text-muted mb-0">Our themes are updated regularly to keep them bug free!</p>
+            <h3 class="h4 mb-2">STUDY 하우스</h3>
+            <p class="text-muted mb-0">제가 알고 있는 것들을<br/>알려드립니다</p>
           </div>
         </div>
         <div class="col-lg-3 col-md-6 text-center">
@@ -117,9 +116,9 @@
         </div>
         <div class="col-lg-3 col-md-6 text-center">
           <div class="mt-5">
-            <i class="fas fa-4x fa-heart text-primary mb-4"></i>
-            <h3 class="h4 mb-2">Made with Love</h3>
-            <p class="text-muted mb-0">Is it really open source if it's not made with love?</p>
+            <a href="/private.do"><i class="fas fa-4x fa-heart text-primary mb-4"></i></a>
+            <h3 class="h4 mb-2">개인 페이지</h3>
+            <p class="text-muted mb-0">저의 사적인 공간입니다.<br/>허락된 사람만 들어오실 수 있죠</p>
           </div>
         </div>
       </div>
@@ -128,6 +127,9 @@
 
   <!-- Portfolio Section -->
   <section id="portfolio">
+  	<div class="portfolio-title">
+  		<h1 class="title-container">AB MAIN PROJECT</h1>
+  	</div>
     <div class="container-fluid p-0">
       <div class="row no-gutters">
         <div class="col-lg-4 col-sm-6">
@@ -135,10 +137,10 @@
             <img class="img-fluid" src="/resources/img/portfolio/thumbnails/1.jpg" alt="">
             <div class="portfolio-box-caption">
               <div class="project-category text-white-50">
-                Category
+                Game :: Cocos2d-X
               </div>
               <div class="project-name">
-                Project Name
+                Don't Chase Me
               </div>
             </div>
           </a>
@@ -148,10 +150,10 @@
             <img class="img-fluid" src="/resources/img/portfolio/thumbnails/2.jpg" alt="">
             <div class="portfolio-box-caption">
               <div class="project-category text-white-50">
-                Category
+                Web :: React.js + Node.js
               </div>
               <div class="project-name">
-                Project Name
+                OctopusFantasy
               </div>
             </div>
           </a>
@@ -161,10 +163,10 @@
             <img class="img-fluid" src="/resources/img/portfolio/thumbnails/3.jpg" alt="">
             <div class="portfolio-box-caption">
               <div class="project-category text-white-50">
-                Category
+                App :: Android
               </div>
               <div class="project-name">
-                Project Name
+                What Shall We Do
               </div>
             </div>
           </a>
@@ -174,10 +176,10 @@
             <img class="img-fluid" src="/resources/img/portfolio/thumbnails/4.jpg" alt="">
             <div class="portfolio-box-caption">
               <div class="project-category text-white-50">
-                Category
+                Application Software :: Java
               </div>
               <div class="project-name">
-                Project Name
+                Streaming Platform
               </div>
             </div>
           </a>
@@ -187,10 +189,10 @@
             <img class="img-fluid" src="/resources/img/portfolio/thumbnails/5.jpg" alt="">
             <div class="portfolio-box-caption">
               <div class="project-category text-white-50">
-                Category
+                Distribute Server :: scala Spark
               </div>
               <div class="project-name">
-                Project Name
+                Log Analysis
               </div>
             </div>
           </a>
@@ -200,10 +202,10 @@
             <img class="img-fluid" src="/resources/img/portfolio/thumbnails/6.jpg" alt="">
             <div class="portfolio-box-caption p-3">
               <div class="project-category text-white-50">
-                Category
+                What's next?
               </div>
               <div class="project-name">
-                Project Name
+                Coming Soon
               </div>
             </div>
           </a>
@@ -264,7 +266,7 @@
 
   <!-- Plugin JavaScript -->
   <script src="resources/vendor/jquery-easing/jquery.easing.min.js"></script>
-  <script src="resources/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+  <script src="resources/vendor/magnific-popup/jquery.magnific-popup.js"></script>
 
   <!-- Custom scripts for this template -->
   <script src="resources/js/creative.js"></script>

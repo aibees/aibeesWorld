@@ -21,7 +21,7 @@ public class UserController {
 	private UserLoginService loginService;
 	
 	@RequestMapping("/loginForm.do")
-	public String loginFrom(Model model) {
+	public String loginFrom() {
 		logger.info("Fowarding to Login Page");
 		return "login/login";
 	}
