@@ -9694,9 +9694,11 @@ header.masthead h1 {
 	text-align: center;
 }
 
-#portfolio .portfolio-class .title-container {
-	padding: 20px auto 5px;
+
+#portfolio .portfolio-title .title-container {
+	padding-top: 50px;
 	color: #fc7c0a;
+	font-weight: bolder;
 }
 
 #portfolio .container-fluid {

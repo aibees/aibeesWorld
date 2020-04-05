@@ -10,4 +10,9 @@ public class PrvateController {
 	public String privateSite() {
 		return "private/private_main";
 	}
+	
+	@RequestMapping("/private/diary.do")
+	public String privateDiary() {
+		return "private/board/listPage";
+	}
 }

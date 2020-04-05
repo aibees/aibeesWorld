@@ -149,7 +149,7 @@
 		<artifactId>maven-war-plugin</artifactId>
 		<version>2.4</version>
 		<configuration>
-		    <webXml>/home/aibees/opt/workspace/kiosk_spring/src/main/webapp/WEB-INF/web.xml</webXml>
+		    <webXml>/home/aibees/opt/workspace/aibeesWorld/src/main/webapp/WEB-INF/web.xml</webXml>
 		    <webappDirectory></webappDirectory>
 		    <webResources>
                      <resource>

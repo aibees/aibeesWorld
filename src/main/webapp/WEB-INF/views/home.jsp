@@ -75,7 +75,7 @@
   </header>
 
   <!-- About Section -->
-  <section class="page-section bg-primary" id="about">
+  <section class="page-section bg-primary h-100" id="about">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-8 text-center">
@@ -89,7 +89,7 @@
   </section>
 
   <!-- Services Section -->
-  <section class="page-section" id="services">
+  <section class="page-section h-100" id="services">
     <div class="container">
       <h2 class="text-center mt-0">AIBEES 서비스!</h2>
       <div class="row">
@@ -97,7 +97,7 @@
           <div class="mt-5">
             <i class="fas fa-4x fa-gem text-primary mb-4"></i>
             <h3 class="h4 mb-2">STUDY 하우스</h3>
-            <p class="text-muted mb-0">제가 알고 있는 것들을<br/>알려드립니다</p>
+            <p class="text-muted mb-0">제가 작업하는 것들을<br/>보여드립니다</p>
           </div>
         </div>
         <div class="col-lg-3 col-md-6 text-center">
@@ -110,15 +110,15 @@
         <div class="col-lg-3 col-md-6 text-center">
           <div class="mt-5">
             <i class="fas fa-4x fa-globe text-primary mb-4"></i>
-            <h3 class="h4 mb-2">Ready to Publish</h3>
-            <p class="text-muted mb-0">You can use this design as is, or you can make changes!</p>
+            <h3 class="h4 mb-2">일상이야기</h3>
+            <p class="text-muted mb-0">전자기기를 벗어난 활동들을<br/>기록하는 공간</p>
           </div>
         </div>
         <div class="col-lg-3 col-md-6 text-center">
           <div class="mt-5">
             <a href="/private.do"><i class="fas fa-4x fa-heart text-primary mb-4"></i></a>
             <h3 class="h4 mb-2">개인 페이지</h3>
-            <p class="text-muted mb-0">저의 사적인 공간입니다.<br/>허락된 사람만 들어오실 수 있죠</p>
+            <p class="text-muted mb-0">저의 사적인 공간입니다.<br/>일기일 수도 있고 연애일수도 있고?</p>
           </div>
         </div>
       </div>
@@ -214,22 +214,14 @@
     </div>
   </section>
 
-  <!-- Call to Action Section -->
-  <section class="page-section bg-dark text-white">
-    <div class="container text-center">
-      <h2 class="mb-4">Free Download at Start Bootstrap!</h2>
-      <a class="btn btn-light btn-xl" href="https://startbootstrap.com/themes/creative/">Download Now!</a>
-    </div>
-  </section>
-
   <!-- Contact Section -->
-  <section class="page-section" id="contact">
+<!--   <section class="page-section h-100" id="contact"> -->
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-8 text-center">
-          <h2 class="mt-0">Let's Get In Touch!</h2>
+          <h2 class="mt-0">Contacts<br/>&<br/>Personal Sites</h2>
           <hr class="divider my-4">
-          <p class="text-muted mb-5">Ready to start your next project with us? Give us a call or send us an email and we will get back to you as soon as possible!</p>
+          <p class="text-muted mb-5">If you want to <b>contact me</b> or want to <b>visit my personal page</b>, please use the link below.</p>
         </div>
       </div>
       <div class="row">
