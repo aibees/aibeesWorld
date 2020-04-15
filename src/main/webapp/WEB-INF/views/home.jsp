@@ -215,7 +215,7 @@
   </section>
 
   <!-- Contact Section -->
-<!--   <section class="page-section h-100" id="contact"> -->
+  <section class="page-section h-100" id="contact">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-8 text-center">

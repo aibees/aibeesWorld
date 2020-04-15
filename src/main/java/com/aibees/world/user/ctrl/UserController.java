@@ -33,4 +33,10 @@ public class UserController {
 		model.addAttribute("loginUserModel", result);
 		return "redirect:main.do";
 	}
+	
+	@RequestMapping("signUp.do")
+	public String userSignUp() {
+		logger.info("Forwarding to user Signup Page");
+		return "login/signup";
+	}
 }
