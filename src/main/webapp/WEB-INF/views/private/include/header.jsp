@@ -16,7 +16,7 @@
     <!-- Ionicons -->
     <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
     <!-- Theme style -->
-    <link href="/resources/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+    <link href="/resources/dist/css/AdminLTE.css" rel="stylesheet" type="text/css" />
     <!-- AdminLTE Skins. Choose a skin from the css/skins 
          folder instead of downloading all of them to reduce the load. -->
     <link href="/resources/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
@@ -29,7 +29,7 @@
     <![endif]-->
     <!-- jQuery 2.1.4 -->
     <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-    
+    <script src="/resources/dist/js/pageCommon.js"></script>
   </head>
     
   <body class="skin-blue sidebar-mini">
@@ -37,11 +37,9 @@
       
       <header class="main-header">
         <!-- Logo -->
-        <a href="/index.jsp" class="logo">
-          <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><b>A</b>LT</span>
+        <a href="/private.do" class="logo">
           <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>AB WORLD</b> 개인공간</span>
+          <span class="logo-lg"><b>연애</b>를 합시다</span>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
@@ -249,76 +247,45 @@
         <section class="sidebar">
           <!-- Sidebar user panel -->
           <div class="user-panel">
-          	
-          	
-          	
-          	<c:if test="${loginUser == null }">
-          	<div class="pull-left image">
-              <img src="" class="img-circle" alt="User Image" />
-            </div>
-            <div class="pull-left info">
-              <a href="#"><i class="fa fa-circle text-success"></i> Offline</a>
-            </div>
-            </c:if>
             <c:if test="${loginUser != null }">
-          	<div class="pull-left image">
-              <img src="/resources/img/${loginUser.imgSrc }" class="img-circle" alt="User Image" />
-            </div>
             <div class="pull-left info">
-              <p>${loginUser.name }</p>
-
-              <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+              <p>${loginUser.name }님이<br/>접속 중입니다</p>
             </div>
- 			</c:if>          
-          
+ 			</c:if> 
           </div>
-          <!-- search form -->
-          <form action="#" method="get" class="sidebar-form">
-            <div class="input-group">
-              <input type="text" name="q" class="form-control" placeholder="Search..."/>
-              <span class="input-group-btn">
-                <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
-              </span>
-            </div>
-          </form>
-          <!-- /.search form -->
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-heart"></i> <span>To. All_Silver</span> <i class="fa fa-angle-left pull-right"></i>
+                <i class="fa fa-heart"></i> <span>다이어리</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
                 <%-- 
                 <li><a href="/board/listAll"><i class="fa fa-circle-o"></i> Dashboard v1</a></li> 
                 <li><a href="/board/listCri"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
                 --%>
-                <li><a href="/private/diary.do"><i class="fa fa-clipboard" aria-hidden="true"></i>TO. 다은이</a></li>
-                <li><a href="/resources/index2.html"><i class="fa fa-circle-o"></i>사진일기</a></li>
+                <li><a id="diary_1" href="/private/diary.do" onClick="setMenuTitle($(this).attr('id'))"><i class="fa fa-clipboard" aria-hidden="true"></i>TO. 다은이</a></li>
+                <li><a id="diary_2" href="/resources/index2.html" onClick="setMenuTitle($(this).attr('id'))"><i class="fa fa-circle-o"></i>사진일기</a></li>
               </ul>
             </li>
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-files-o"></i>
-                <span>Layout Options</span>
+                <span>게시판</span>
+                <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="../layout/top-nav.html"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
-                <li><a href="../layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>
-                <li><a href="../layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
-                <li><a href="../layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
+                <li><a id="dash_1" href="../layout/top-nav.html"><i class="fa fa-circle-o"></i>메모</a></li>
+                <li><a id="dash_2" href="../layout/boxed.html"><i class="fa fa-circle-o"></i>공지</a></li>
+                <li><a id="dash_3" href="../layout/fixed.html"><i class="fa fa-circle-o"></i>하고싶은 말</a></li>
+                <li><a id="dash_4" href="../layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i>유우머</a></li>
               </ul>
-            </li>
-            <li>
-              <a href="../widgets.html">
-                <i class="fa fa-th"></i> <span>Widgets</span> <small class="label pull-right bg-green">new</small>
-              </a>
             </li>
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-pie-chart"></i>
-                <span>Charts</span>
+                <span>Love Charts</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
@@ -328,69 +295,12 @@
                 <li><a href="../charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
               </ul>
             </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-laptop"></i>
-                <span>UI Elements</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="../UI/general.html"><i class="fa fa-circle-o"></i> General</a></li>
-                <li><a href="../UI/icons.html"><i class="fa fa-circle-o"></i> Icons</a></li>
-                <li><a href="../UI/buttons.html"><i class="fa fa-circle-o"></i> Buttons</a></li>
-                <li><a href="../UI/sliders.html"><i class="fa fa-circle-o"></i> Sliders</a></li>
-                <li><a href="../UI/timeline.html"><i class="fa fa-circle-o"></i> Timeline</a></li>
-                <li><a href="../UI/modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
-              </ul>
-            </li>
-            <li class="treeview active">
-              <a href="#">
-                <i class="fa fa-edit"></i> <span>Forms</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li class="active"><a href="general.html"><i class="fa fa-circle-o"></i> General Elements</a></li>
-                <li><a href="advanced.html"><i class="fa fa-circle-o"></i> Advanced Elements</a></li>
-                <li><a href="editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>
-              </ul>
-            </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-table"></i> <span>Tables</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="../tables/simple.html"><i class="fa fa-circle-o"></i> Simple tables</a></li>
-                <li><a href="../tables/data.html"><i class="fa fa-circle-o"></i> Data tables</a></li>
-              </ul>
-            </li>
             <li>
               <a href="../calendar.html">
-                <i class="fa fa-calendar"></i> <span>Calendar</span>
-                <small class="label pull-right bg-red">3</small>
+                <i class="fa fa-calendar"></i> <span>스케쥴 공유</span>
+                <!-- <small class="label pull-right bg-red">3</small> -->
               </a>
-            </li>
-            <li>
-              <a href="../mailbox/mailbox.html">
-                <i class="fa fa-envelope"></i> <span>Mailbox</span>
-                <small class="label pull-right bg-yellow">12</small>
-              </a>
-            </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-folder"></i> <span>Examples</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="../examples/invoice.html"><i class="fa fa-circle-o"></i> Invoice</a></li>
-                <li><a href="../examples/login.html"><i class="fa fa-circle-o"></i> Login</a></li>
-                <li><a href="../examples/register.html"><i class="fa fa-circle-o"></i> Register</a></li>
-                <li><a href="../examples/lockscreen.html"><i class="fa fa-circle-o"></i> Lockscreen</a></li>
-                <li><a href="../examples/404.html"><i class="fa fa-circle-o"></i> 404 Error</a></li>
-                <li><a href="../examples/500.html"><i class="fa fa-circle-o"></i> 500 Error</a></li>
-                <li><a href="../examples/blank.html"><i class="fa fa-circle-o"></i> Blank Page</a></li>                
-              </ul>
-            </li>
+            </li><!-- 
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-share"></i> <span>Multilevel</span>
@@ -413,12 +323,7 @@
                 </li>
                 <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
               </ul>
-            </li>
-            <li><a href="/resources/documentation/index.html"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
-            <li class="header">LABELS</li>
-            <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
-            <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
-            <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
+            </li> -->
           </ul>
         </section>
         <!-- /.sidebar -->
@@ -429,7 +334,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            General Form Elements
-            <small>Preview</small>
+            <span id="menuname_header">메인 페이지</span>
+            <small id="menuname_header_small">미리보기</small>
           </h1>
         </section>

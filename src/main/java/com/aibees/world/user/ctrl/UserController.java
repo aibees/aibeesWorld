@@ -1,6 +1,8 @@
 package com.aibees.world.user.ctrl;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,5 +40,13 @@ public class UserController {
 	public String userSignUp() {
 		logger.info("Forwarding to user Signup Page");
 		return "login/signup";
+	}
+	
+	@RequestMapping("logout.do")
+	public String userLogout(HttpServletRequest request) {
+		HttpSession session = request.getSession(false);
+		session.removeAttribute("loginUser");
+		logger.info("User Logout From page");
+		return "redirect:main.do";
 	}
 }

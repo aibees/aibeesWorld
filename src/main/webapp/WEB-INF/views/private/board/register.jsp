@@ -11,34 +11,32 @@
 			<!-- general form elements -->
 			<div class="box box-primary">
 				<div class="box-header">
-					<h3 class="box-title">REGISTER BOARD</h3>
+					<h3 class="box-title">일기 쓰기</h3>
 				</div>
 				<!-- /.box-header -->
 
-<form role="form" method="post" action="/board/register.do">
-	<div class="box-body">
-		<div class="form-group">
-			<label for="exampleInputEmail1">Title</label> 
-			<input type="text"
-				name='title' class="form-control" placeholder="Enter Title">
-		</div>
-		<div class="form-group">
-			<label for="exampleInputPassword1">Content</label>
-			<textarea class="form-control" name="content" rows="3"
-				placeholder="Enter ..."></textarea>
-		</div>
-		<div class="form-group">
-			<label for="exampleInputEmail1">Writer</label> 
-			<input type="text"
-				name="writer" class="form-control" readonly value="${loginUser.id}">
-		</div>
-	</div>
-	<!-- /.box-body -->
+	<form role="form" method="post" action="/private/register.do">
+		<table class="registerTable">
+		  <tr>
+		    <td>제목</td>
+		    <td><input type="text" name='title' class="form-control" style="width:90%" placeholder="Enter Title"></td>
+		  </tr>
+		  <tr>
+		  	<td>내용 ( <strong><span id="registerByte">0</span></strong> byte )</td>
+		  	<td><textarea class="form-control" name="content" rows="6" style="width:90%" placeholder="Enter ..."></textarea></td>
+		  </tr>
+		  <tr>
+		    <td>일자</td>
+		    <td><input type="date" name='datetime' class="form-control" min="2020-02-16"></td>
+		  </tr>
+		  <tr>
+		  	<td>글쓴이</td>
+		  	<td><input type="text" name="writer" class="form-control" readonly value="${loginUser.name}"></td>
+		  </tr>
+		</table>
 
-	<div class="box-footer">
-		<button type="submit" class="btn btn-primary">Submit</button>
-	</div>
-</form>
+		<input type="submit" class="btn btn-primary" value="기록하기" />
+	</form>
 
 
 			</div>

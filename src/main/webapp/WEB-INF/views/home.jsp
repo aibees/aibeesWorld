@@ -25,6 +25,15 @@
   <!-- Theme CSS - Includes Bootstrap -->
   <link href="resources/css/creative.css" rel="stylesheet">
 
+  <script>
+  	function logout_chk() {
+	  const logoutCheck = confirm("로그아웃 하시겠습니까")
+	  if(logoutCheck) {
+		  window.location.href="logout.do"
+	  }
+  }
+  </script>
+
 </head>
 
 <body id="page-top">
@@ -51,7 +60,14 @@
             <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="loginForm.do">Login</a>
+          	<c:choose>
+          	<c:when test="${loginUser != null }">
+            	<a id="logoutA" class="nav-link" href="#" onClick="logout_chk()">Logout</a>
+            </c:when>
+            <c:otherwise>
+            	<a class="nav-link" href="loginForm.do">Login</a>
+            </c:otherwise>
+            </c:choose>
           </li>
         </ul>
       </div>

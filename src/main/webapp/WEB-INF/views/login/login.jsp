@@ -77,7 +77,7 @@
 				<div class="loginForm">
 					<h2>LOGIN PAGE</h2>
 					<span>
-						<form name="lofingForm" method="post" action="/login.do">
+						<form name="logingForm" method="post" action="/login.do">
 							<input type="text" id="id" name="id" /> <br/>
 							<input type="text" id="pwd" name="pwd" />
 							<input type="submit" id="loginBtn" value="LOGIN" />

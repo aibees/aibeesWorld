@@ -16,7 +16,7 @@
 			<!-- general form elements -->
 			<div class='box'>
 				<div class="box-header with-border">
-					<h3 class="box-title">Board List</h3>
+					<h3 class="box-title">다은이에게 쓰는 일기</h3>
 				</div>
 				<div class='box-body'>
 					<!-- 추가  -->
@@ -25,17 +25,15 @@
 						<option value="writer">작성자</option>
 					</select> 
 					<input type="text" name='searchKeyword' id="searchKeyword">
-					<button id='searchBtn'>Search</button>
-					<!-- 기존 -->
-					<button id='newBtn'>New Board</button>
+					<button id='searchBtn'>찾기</button>
+					<!-- 기존 --><!-- button 말고 네모 이미지로 변경 요구 -->
+					<button id='newBtn'>새 일기 쓰기</button>
 				</div>
-				
-				
 				
 			</div>
 			<div class="box">
 				<div class="box-header with-border">
-					<h3 class="box-title">LIST PAGING</h3>
+					<h3 class="box-title">일기 리스트</h3>
 				</div>
 				<div class="box-body">
 					<table class="table table-bordered">
@@ -125,7 +123,7 @@
 // 	});
 	
 	$("#newBtn").on("click", function() {
-		location.href="/board/registerForm.do";
+		location.href="/private/createDiary.do";
 	});
 	
 	$("#searchBtn").click(function() {
