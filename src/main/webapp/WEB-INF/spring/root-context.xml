@@ -19,8 +19,14 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	
-	<context:property-placeholder location="classpath:config/*.properties" />
-	
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+            <property name="location">
+                <value>classpath:config/config.properties</value>
+            </property>
+        </bean>
+
+	<!-- <context:property-placeholder location="classpath:config/config.properties" /> -->
+
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="${db.driverClass}"></property>
