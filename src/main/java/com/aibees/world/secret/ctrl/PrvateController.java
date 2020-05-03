@@ -1,13 +1,18 @@
 package com.aibees.world.secret.ctrl;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.aibees.world.secret.model.vo.DiaryDTO;
 import com.aibees.world.user.ctrl.UserController;
+import com.aibees.world.user.model.vo.UserVO;
 
 @Controller
 public class PrvateController {
@@ -15,8 +20,21 @@ public class PrvateController {
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 	
 	@RequestMapping("/private.do")
-	public String privateSite() {
-		return "private/private_main";
+	public String privateSite(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession(false);
+		UserVO uservo = (UserVO)session.getAttribute("loginUser");
+		String role = uservo.getRole();
+		String name = uservo.getName();
+		System.out.println(role);
+		
+		if("admin".equals(role) || "임다은".equals(name)) {
+			return "private/private_main";
+		}
+		else { // Permission Denied
+			model.addAttribute("setAlert", "접근 권한이 없습니다.");
+			model.addAttribute("url", "index.jsp");
+			return "private/err_denied";
+		}
 	}
 	
 	@RequestMapping("/private/diary.do")
