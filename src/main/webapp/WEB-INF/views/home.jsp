@@ -31,7 +31,16 @@
 	  if(logoutCheck) {
 		  window.location.href="logout.do"
 	  }
-  }
+  	}
+  	
+  	function permission_chk(obj) {
+  		if(obj == null) {
+  			const loginCheck = confirm("로그인이 필요한 서비스입니다. 로그인 하시겠습니까")
+  			if(loginCheck) {
+  		  		window.location.href="loginForm.do"
+  	  		}
+  		}
+    }
   </script>
 
 </head>
@@ -132,7 +141,7 @@
         </div>
         <div class="col-lg-3 col-md-6 text-center">
           <div class="mt-5">
-            <a href="/private.do"><i class="fas fa-4x fa-heart text-primary mb-4"></i></a>
+            <a href="/private.do" onClick="permission_chk(${loginUser})")><i class="fas fa-4x fa-heart text-primary mb-4"></i></a>
             <h3 class="h4 mb-2">개인 페이지</h3>
             <p class="text-muted mb-0">저의 사적인 공간입니다.<br/>일기일 수도 있고 연애일수도 있고?</p>
           </div>

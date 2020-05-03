@@ -22,6 +22,7 @@ public class PrvateController {
 	@RequestMapping("/private.do")
 	public String privateSite(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession(false);
+		
 		UserVO uservo = (UserVO)session.getAttribute("loginUser");
 		String role = uservo.getRole();
 		String name = uservo.getName();

@@ -10,7 +10,17 @@
 	<script type="text/javascript">
 		var message = '${setAlert}'
 		var url = '${url}'
-		alert(message)
+		
+		if('loginForm.do' == url) {
+			loginCheck = confirm(message)
+			if(loginCheck) {
+				url = 'loginForm.do'
+			}
+		}
+		else {
+			alert(message)
+		}
+		
 		location.href = url
 	</script>
 </body>

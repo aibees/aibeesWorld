@@ -29,6 +29,7 @@
 	<!-- add intercepter bean in here -->
 	<beans:bean id="SessionCheck" class="com.aibees.world.user.util.SessionCheckInterceptor" />
 	<beans:bean id="login" class="com.aibees.world.user.util.LoginInterceptor" />
+	<beans:bean id="privateCheck" class="com.aibees.world.secret.util.SessionCheckInterceptor" />
 	
 	<interceptors>
 		<interceptor>
@@ -39,5 +40,9 @@
 			<mapping path="/login.do"/>
 			<beans:ref bean="SessionCheck"/>
 		</interceptor> -->
+		<interceptor>
+			<mapping path="/private.do" />
+			<beans:ref bean="privateCheck"/>
+		</interceptor>
 	</interceptors>
 </beans:beans>
