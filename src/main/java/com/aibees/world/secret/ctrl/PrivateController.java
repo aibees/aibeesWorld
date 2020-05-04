@@ -11,18 +11,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.aibees.world.secret.model.vo.DiaryDTO;
-import com.aibees.world.user.ctrl.UserController;
 import com.aibees.world.user.model.vo.UserVO;
 
 @Controller
-public class PrvateController {
+public class PrivateController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+	private static final Logger logger = LoggerFactory.getLogger(PrivateController.class);
 	
 	@RequestMapping("/private.do")
 	public String privateSite(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession(false);
-		
 		UserVO uservo = (UserVO)session.getAttribute("loginUser");
 		String role = uservo.getRole();
 		String name = uservo.getName();

@@ -41,7 +41,7 @@
 			<beans:ref bean="SessionCheck"/>
 		</interceptor> -->
 		<interceptor>
-			<mapping path="/private.do" />
+			<mapping path="/private/**/*.do" />
 			<beans:ref bean="privateCheck"/>
 		</interceptor>
 	</interceptors>

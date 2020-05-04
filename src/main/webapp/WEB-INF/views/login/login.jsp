@@ -86,10 +86,10 @@
 					<p></p>
 					<div class="signService">
 						<div class="forgot">
-							<a href="login/forgotted.do">forget ID/PW</a>
+							<a href="/login/forgotted.do">forget ID/PW</a>
 						</div>
 						<div class="signUp">
-							<a href="login/signUp.do">Register</a>
+							<a href="/signUp.do">Register</a>
 						</div>
 					</div>
 				</div>
