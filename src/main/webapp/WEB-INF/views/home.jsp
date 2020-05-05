@@ -25,6 +25,7 @@
   <!-- Theme CSS - Includes Bootstrap -->
   <link href="resources/css/creative.css" rel="stylesheet">
 
+  <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
   <script>
   	function logout_chk() {
 	  const logoutCheck = confirm("로그아웃 하시겠습니까")
@@ -34,17 +35,11 @@
   	}
   	
   	function permission_chk(obj) {
-  		if(obj == null) {
-  			const loginCheck = confirm("로그인이 필요한 서비스입니다. 로그인 하시겠습니까")
-  			if(loginCheck) {
-  		  		window.location.href="loginForm.do"
-  	  		}
-  		}
+  		alert("로그인이 필요한 서비스입니다. 로그인 페이지로 이동합니다.")
     }
   </script>
 
 </head>
-
 <body id="page-top">
 
   <!-- Navigation -->
@@ -106,7 +101,15 @@
         <div class="col-lg-8 text-center">
           <h2 class="text-white mt-0">저를 소개합니다.</h2>
           <hr class="divider light my-4">
-          <p class="text-white-50 mb-4">Start Bootstrap has everything you need to get your new website up and running in no time! Choose one of our open source, free to download, and easy to use themes! No strings attached!</p>
+          <p class="text-black-50 mb-4"><b>기계장인 아버지와 손 기술 좋은 어머니 사이에 태어나<br/><br/>
+          								어릴 때부터 레고 조립과 기계들 괴롭히기를 즐겨하고<br/><br/>
+          								한 때, 건축하겠다고 모의고사 공부대신 설계공부를 했던 철부지가<br/><br/>
+          								고 3에 어플리케이션에 빠져서 무턱대고 미디어학과에 입학했더니<br/><br/>
+          								소프트웨어공학에 빠져버려서 컴퓨터를 전공하고<br/><br/>
+          								웹 개발/유지보수 직업을 가지게 된 아이<br/><br/>
+          								<br/><br/>
+          								박준서 입니다.</b>
+          </p>
           <a class="btn btn-light btn-xl js-scroll-trigger" href="https://aibees.github.io/about">GO TO ABOUT</a>
         </div>
       </div>
@@ -114,9 +117,9 @@
   </section>
 
   <!-- Services Section -->
-  <section class="page-section h-100" id="services">
+  <section class="page-section h-auto" id="services">
     <div class="container">
-      <h2 class="text-center mt-0">AIBEES 서비스!</h2>
+      <h2 class="text-center mt-0">AIBEES 서비스</h2>
       <div class="row">
         <div class="col-lg-3 col-md-6 text-center">
           <div class="mt-5">
@@ -134,14 +137,14 @@
         </div>
         <div class="col-lg-3 col-md-6 text-center">
           <div class="mt-5">
-            <i class="fas fa-4x fa-globe text-primary mb-4"></i>
+            <a href="#" onClick="alert('서비스 준비중입니다.');return false;"><i class="fas fa-4x fa-globe text-primary mb-4"></i></a>
             <h3 class="h4 mb-2">일상이야기</h3>
             <p class="text-muted mb-0">전자기기를 벗어난 활동들을<br/>기록하는 공간</p>
           </div>
         </div>
         <div class="col-lg-3 col-md-6 text-center">
           <div class="mt-5">
-            <a href="/private.do" onClick="permission_chk(${loginUser})")><i class="fas fa-4x fa-heart text-primary mb-4"></i></a>
+            <a href="/private.do" onClick="permission_chk(${loginUser})"><i class="fas fa-4x fa-heart text-primary mb-4"></i></a>
             <h3 class="h4 mb-2">개인 페이지</h3>
             <p class="text-muted mb-0">저의 사적인 공간입니다.<br/>일기일 수도 있고 연애일수도 있고?</p>
           </div>

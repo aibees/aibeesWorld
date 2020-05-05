@@ -15,7 +15,6 @@ function setMenuTitle(id) {
 	else if(idVal == "schedule") {
 		ret_head = "스케쥴"
 	}
-	alert("set Menu Title " + ret_head + " " + txt)
 	
 	$("menuname_header").text(ret_head)
 	$("menuname_header_small").text(txt)

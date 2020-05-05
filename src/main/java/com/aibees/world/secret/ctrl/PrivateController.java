@@ -22,6 +22,9 @@ public class PrivateController {
 	public String privateSite(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession(false);
 		UserVO uservo = (UserVO)session.getAttribute("loginUser");
+		if(uservo == null) {
+			return "redirect:loginForm.do";
+		}
 		String role = uservo.getRole();
 		String name = uservo.getName();
 		System.out.println(role);

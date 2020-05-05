@@ -28,7 +28,7 @@
 
   // Collapse Navbar
   var navbarCollapse = function() {
-    if ($("#mainNav").offset().top > 100) {
+    if ($("#mainNav").offset().top > 100 || $(window).width() < 1090) {
       $("#mainNav").addClass("navbar-scrolled");
       $("#letterLogo").attr("src", "/resources/img/homeLetterLogo2.png")
     } else {

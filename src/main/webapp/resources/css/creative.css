@@ -2256,7 +2256,7 @@ fieldset:disabled a.btn {
 
 .btn-primary {
   color: #fff;
-  background-color: #f4623a;
+  background-color: #ff9750;
   border-color: #f4623a;
 }
 
@@ -6205,7 +6205,7 @@ a.close.disabled {
 }
 
 .bg-primary {
-  background-color: #f4623a !important;
+  background-color: #ff9750 !important;
 }
 
 a.bg-primary:hover, a.bg-primary:focus,
@@ -9663,6 +9663,7 @@ header.masthead {
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-size: cover;
+  height: 100%;
 }
 
 header.masthead h1 {
@@ -9671,7 +9672,7 @@ header.masthead h1 {
 
 @media (min-width: 992px) {
   header.masthead {
-    height: 100vh;
+    height: 100%;
     min-height: 40rem;
     padding-top: 72px;
     padding-bottom: 0;

@@ -265,8 +265,9 @@
                 <li><a href="/board/listAll"><i class="fa fa-circle-o"></i> Dashboard v1</a></li> 
                 <li><a href="/board/listCri"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
                 --%>
-                <li><a id="diary_1" href="/private/diary.do" onClick="setMenuTitle($(this).attr('id'))"><i class="fa fa-clipboard" aria-hidden="true"></i>TO. 다은이</a></li>
-                <li><a id="diary_2" href="/resources/index2.html" onClick="setMenuTitle($(this).attr('id'))"><i class="fa fa-circle-o"></i>사진일기</a></li>
+                <li><a id="diary_1" href="/private/diary.do" onClick="setMenuTitle($(this).attr('id'))"><i class="fa fa-clipboard" aria-hidden="true"></i>TO. 다니</a></li>
+                <li><a id="diary_1" href="/private/diary.do" onClick="setMenuTitle($(this).attr('id'))"><i class="fa fa-clipboard" aria-hidden="true"></i>TO. 준서</a></li>
+                <li><a id="diary_2" href="/private/imgDiary.do" onClick="setMenuTitle($(this).attr('id'))"><i class="fa fa-circle-o"></i>사진일기</a></li>
               </ul>
             </li>
             <li class="treeview">
