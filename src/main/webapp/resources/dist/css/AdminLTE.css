@@ -4365,4 +4365,15 @@ fieldset[disabled] .btn-vk.active {
   .table-responsive > .table tr td {
     white-space: normal!important;
   }
+  
+  /* custom id + class css */
+  #miniTitle {
+  	width: 120px;
+  	min-width: 120px;
+  	word-break: break-all;
+  }
+  
+  textarea {
+  	max-width:600px;
+  }
 }

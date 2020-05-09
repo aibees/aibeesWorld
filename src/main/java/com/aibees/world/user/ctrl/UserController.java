@@ -56,4 +56,10 @@ public class UserController {
 		logger.info("User Logout From page");
 		return "redirect:main.do";
 	}
+	
+	@RequestMapping("loginRedirect.do")
+	public String loginRedirect() {
+		logger.debug("No Session. Forward to LoginPage or Main");;
+		return "login/redirect";
+	}
 }
