@@ -17,4 +17,8 @@
 		FROM	user
 		WHERE	id = #{id} AND pwd = #{pwd}
 	</select>
+	
+	<insert id="insert" parameterType="userVO">
+		INSERT INTO user(id, pwd, name, role, phone, createDate) VALUES (#{id}, #{pwd}, #{name}, #{role}, #{phone}, DEFAULT)
+	</insert>
 </mapper>  

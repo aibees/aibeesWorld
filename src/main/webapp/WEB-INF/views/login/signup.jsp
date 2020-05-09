@@ -80,7 +80,7 @@
 			margin-top: 15px;
 		}
 	</style>
-	
+
 	<script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 	<script type="text/javascript">
 		$('idInput').focusout(function() {
@@ -91,19 +91,18 @@
 			$('idCheck').style.display = '';
 		})
 	
-		function ajaxRegister() {
+		const ajaxRegister = function() {
 			const params = $('#registerForm').serialize();
-			alert(params)
-		 	$.ajax({
-				url: 'register.do',
-				type: 'POST',
-				data: params,
-				contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-				dataType: 'html',
-				success: function(result) {
-					alert(result)
+			
+			$.post('/registerPost.do', params, function(data) {
+				
+				if("success" == data) {
+					alert("회원가입을 축하합니다.");
 				}
-			}) 
+				else {
+					alert("오류가 발생했습니다.");
+				}
+			})
 		}
 	</script>
 	<body>
@@ -138,6 +137,12 @@
 							</tr>
 							<tr>
 							  <td><input type="text" name="name" /></td>
+							</tr>
+							<tr>
+							  <td>전화번호<br/><small>전화 안걸거니까 안심하세요.</small></td>
+							</tr>
+							<tr>
+							  <td><input type="tel" name="phone" /></td>
 							</tr>
 							<tr>
 							  <td><input type="submit" id="signupBtn" value="REGISTER" onClick="ajaxRegister()"/></td>

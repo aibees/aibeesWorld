@@ -10,10 +10,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.aibees.world.user.model.vo.UserDTO;
 import com.aibees.world.user.model.vo.UserVO;
 import com.aibees.world.user.service.UserLoginService;
+import com.aibees.world.user.service.UserUpdateService;
 
 @Controller
 public class UserController {
@@ -22,6 +24,9 @@ public class UserController {
 	
 	@Resource(name="UserLoginService")
 	private UserLoginService loginService;
+	
+	@Resource(name="UserUpdateService")
+	private UserUpdateService updateService;
 	
 	@RequestMapping("/loginForm.do")
 	public String loginFrom() {
@@ -43,10 +48,21 @@ public class UserController {
 		return "login/signup";
 	}
 	
-	@RequestMapping(value="register.do", method=RequestMethod.POST)
-	public String UserLogin(UserVO uservo) {
-		logger.info("register uservo data : {}", uservo);
-		return "redirect:loginForm.do";
+	@RequestMapping(value="/registerPost.do", method=RequestMethod.POST)
+	public String UserRegister(UserVO uservo) {
+		logger.debug("logger debug test");
+		logger.info("Debug : register uservo data : {}", uservo);
+		System.out.println("shit");
+		int updateResult = updateService.InsertService(uservo);
+		System.out.println("updateResult : " + updateResult);
+		if(updateResult == 1) {
+			// normal result : Success
+			return "success";
+		}
+		else {
+			// Failed
+			return "failed";
+		}
 	}
 	
 	@RequestMapping("logout.do")
