@@ -30,16 +30,22 @@
     <!-- jQuery 2.1.4 -->
     <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <script src="/resources/dist/js/pageCommon.js"></script>
+    
+    <style>
+    a {
+    	text-decoration: none;
+    }
+    </style>
   </head>
     
   <body class="skin-blue sidebar-mini">
     <div class="wrapper">
       
       <header class="main-header">
-        <!-- Logo -->
         <a href="/private.do" class="logo">
-          <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>연애</b>를 합시다</span>
+          <span class="logo-lg">
+          	<b>연애</b>를 합시다
+          </span>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
@@ -255,7 +261,6 @@
           </div>
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
-            <li class="header">MAIN NAVIGATION</li>
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-heart"></i> <span>다이어리</span> <i class="fa fa-angle-left pull-right"></i>

@@ -42,14 +42,14 @@ public class UserController {
 		return "redirect:main.do";
 	}
 	
-	@RequestMapping("signUp.do")
+	@RequestMapping("/signUp.do")
 	public String userSignUp() {
 		logger.info("Forwarding to user Signup Page");
 		return "login/signup";
 	}
 	
 	@RequestMapping(value="/registerPost.do", method=RequestMethod.POST)
-	public String UserRegister(UserVO uservo) {
+	public String UserRegister(UserVO uservo, Model model) {
 		logger.debug("logger debug test");
 		logger.info("Debug : register uservo data : {}", uservo);
 		System.out.println("shit");
@@ -57,12 +57,13 @@ public class UserController {
 		System.out.println("updateResult : " + updateResult);
 		if(updateResult == 1) {
 			// normal result : Success
-			return "success";
+			model.addAttribute("resultFlag", "success");
 		}
 		else {
 			// Failed
-			return "failed";
+			model.addAttribute("resultFlag", "failed");
 		}
+		return "login/registerSuccess";
 	}
 	
 	@RequestMapping("logout.do")

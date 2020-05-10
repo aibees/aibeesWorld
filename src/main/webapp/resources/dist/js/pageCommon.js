@@ -19,5 +19,3 @@ function setMenuTitle(id) {
 	$("menuname_header").text(ret_head)
 	$("menuname_header_small").text(txt)
 }
-
-$

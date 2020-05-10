@@ -79,30 +79,43 @@
 			background-color: #95E0C8;
 			margin-top: 15px;
 		}
+		
+		#trIdCheck {
+			display: none;
+			text-align: -webkit-center;
+			color: blue;
+			font-size: smaller;
+			font-weight: bold;
+		}
 	</style>
 
-	<script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+	<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript">
-		$('idInput').focusout(function() {
-			alert("test")
-			const idText = $(this).text()
-			alert(idText)
-			$('idCheck').text(idText + "는 사용 가능한 아이디 입니다.")
-			$('idCheck').style.display = '';
-		})
 	
-		const ajaxRegister = function() {
-			const params = $('#registerForm').serialize();
+		const idCheckFunc = function() {
+			const idText = $('#idInput').val()
+			document.getElementById('idCheck').innerHTML = ("<smaller>" + idText + "는<br/>사용 가능한 아이디 입니다.<br/>지금 이 기능은 무용지물<smaller>")
+			document.getElementById('trIdCheck').style.display = 'block';
+		}
+		
+		
+		const setPhoneFunc = function() {
+			//regex
+			const regex = new RegExp("\d{11}");
 			
-			$.post('/registerPost.do', params, function(data) {
-				
-				if("success" == data) {
-					alert("회원가입을 축하합니다.");
-				}
-				else {
-					alert("오류가 발생했습니다.");
-				}
-			})
+			const phone = $('#phone').val()
+			const regret = regex.exec(phone)
+			if(phone.length != 11) {
+				alert("정확한 전화번호를 입력해주세요.");
+				return;
+			}
+			
+			const phonearr = new Array();
+			phonearr[0] = phone.substr(0,3);
+			phonearr[1] = phone.substr(3,4);
+			phonearr[2] = phone.substr(7,4);
+			
+			$('#phone').val(phonearr[0]+"-"+phonearr[1]+"-"+phonearr[2])
 		}
 	</script>
 	<body>
@@ -115,16 +128,16 @@
 				<hr>
 				<div class="loginForm">
 					<h2>REGISTER PAGE</h2>
-					<form name="registerForm" id="registerForm">
+					<form name="registerForm" id="registerForm" method="post" action="/registerPost.do">
 						<table >
 							<tr>
 							  <td>하고싶은 아이디</td>
 							</tr>
 							<tr>
-							  <td id="idInput"><input type="text" name="id" /></td>
+							  <td><input id="idInput" type="text" name="id" onfocusout="idCheckFunc()"/></td>
 							</tr>
-							<tr id="trIdCheck" style="display: none;">
-							  <td><span id="idCheck"></span></td>
+							<tr id="trIdCheck">
+							  <td><span id="idCheck" style="text-align: center;margin: auto;"></span></td>
 							</tr>
 							<tr>
 							  <td><small>아이디와는 다른</small><br/>비밀번호</td>
@@ -142,10 +155,10 @@
 							  <td>전화번호<br/><small>전화 안걸거니까 안심하세요.</small></td>
 							</tr>
 							<tr>
-							  <td><input type="tel" name="phone" /></td>
+							  <td><input id="phone" class="phoneEdit" type="tel" name="phone" value="" onfocusout="setPhoneFunc()"/></td>
 							</tr>
 							<tr>
-							  <td><input type="submit" id="signupBtn" value="REGISTER" onClick="ajaxRegister()"/></td>
+							  <td><input type="submit" id="signupBtn" value="REGISTER"/></td>
 							</tr>
 							<input type="hidden" name="role" value="visited" />
 						</table>
