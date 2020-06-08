@@ -15,7 +15,7 @@
 			  , ROLE
 			  , CREATEDATE
 		FROM	user
-		WHERE	id = #{id} AND pwd = #{pwd}
+		WHERE	id = #{id}
 	</select>
 	
 	<insert id="insert" parameterType="userVO">

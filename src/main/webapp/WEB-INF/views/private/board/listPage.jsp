@@ -38,11 +38,10 @@
 				<div class="box-body">
 					<table class="table table-bordered">
 						<tr>
-							<th style="width: 10px">BNO</th>
-							<th>TITLE</th>
-							<th>WRITER</th>
-							<th>REGDATE</th>
-							<th style="width: 40px">VIEWCNT</th>
+							<th style="width: 15%">번호</th>
+							<th style="width: 45%">제목</th>
+							<th style="width: 25%">작성자</th>
+							<th style="width: 15%">날짜</th>
 						</tr>
 						
 						<tbody id="tbody">

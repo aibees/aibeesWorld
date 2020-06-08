@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+	
+<mapper namespace="com.aibees.world.private">
+	<insert id="insertDiary" parameterType="diaryDTO">
+		INSERT INTO diary(title, content, creatdate, writer) VALUES (#{title}, #{content}, #{datetime}, #{writer})
+	</insert>
+	
+	<select id="selectAllDiary" parameterType="String" resultType="list">
+		SELECT	SEQ,
+			  	TITLE,
+			  	CONTENT,
+			  	DATETIME,
+			  	WRITER
+		FROM	diary
+		WHERE	writer = #{value}
+	</select>
+</mapper>

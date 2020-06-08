@@ -5,6 +5,8 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>AB WORLD : LOGIN</title>
+		
+		<script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 	</head>
 	<meta name="viewport" content="width=device-width">
 	<!-- style css added /* 추후 resource에 css 파일로 따로 정리 필요 */ -->
@@ -108,7 +110,7 @@
 				<div class="loginForm">
 					<h2>LOGIN PAGE</h2>
 					<span>
-						<form id="loginForm" name="loginForm" method="post" action="/login.do">
+						<form id="loginForm" name="loginForm" method="post" >
 							<table>
 								<tr>
 								  <td><b>아이디</b></td>
@@ -123,7 +125,7 @@
 								  <td><input type="text" id="pwd" name="pwd" /></td>
 								</tr>
 								<tr>
-								  <td><input type="submit" id="loginBtn" value="LOGIN" /></td>
+								  <td><input type="button" id="loginBtn" value="LOGIN" onClick="loginAjax(); return false"/></td>
 								</tr>
 							</table>
 						</form>
@@ -140,5 +142,36 @@
 				</div>
 			</div>
 		</div>
+		
+		<script>
+			String.prototype.trim = function() {
+				return this.replace(/^\s+|\s+$/g,"");
+			}
+		
+			function loginAjax() {
+				const formData = $("#loginForm").serialize();
+				
+				const input_id = $('#id').val();
+				const input_pw = $('#pwd').val();
+				
+				$.ajax({
+					cache: false,
+					url: "login.do",
+					type: 'POST',
+					data: formData,
+					success: function(data) {
+						if($.trim(data.id) == $.trim(input_id) && $.trim(data.pwd) == $.trim(input_pw)) {
+							document.location.href="main.do";
+						}
+						else {
+							alert("아이디와 비밀번호를 확인하세요. ")
+						}
+					},
+					error: function(xhr, status) {
+						alert("error")
+					}
+				})
+			}
+		</script>
 	</body>
 </html>

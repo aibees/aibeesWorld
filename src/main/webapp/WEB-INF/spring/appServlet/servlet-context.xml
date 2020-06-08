@@ -18,6 +18,13 @@
 	<resources mapping="/img/**" location="/resources/img/"/>
 	<resources mapping="/js/**" location="/resources/js/"/>
 	
+	<!-- ApplicationContextProvider -->
+	<beans:bean id="applicationContextProvider" class="com.aibees.world.common.ApplicationContextProvider" />
+	
+	<!-- Common Util Class Bean -->
+	<beans:bean id="StringUtils" class="com.aibees.world.utils.StringUtils" />
+	<beans:bean id="ObjectUtils" class="com.aibees.world.utils.ObjectUtils" />
+	
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
@@ -32,10 +39,10 @@
 	<beans:bean id="privateCheck" class="com.aibees.world.secret.util.SessionCheckInterceptor" />
 	
 	<interceptors>
-		<interceptor>
+		<!-- <interceptor>
 			<mapping path="/login.do" />
 			<beans:ref bean="login"/>
-		</interceptor>
+		</interceptor> -->
 		<!-- <interceptor>
 			<mapping path="/login.do"/>
 			<beans:ref bean="SessionCheck"/>

@@ -1,5 +1,6 @@
 package com.aibees.world.secret.ctrl;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -11,12 +12,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.aibees.world.secret.model.vo.DiaryDTO;
+import com.aibees.world.secret.service.DiaryTransactionService;
 import com.aibees.world.user.model.vo.UserVO;
 
 @Controller
 public class PrivateController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(PrivateController.class);
+	
+	@Resource(name="DiaryTransactionService")
+	DiaryTransactionService diaryTr;
 	
 	@RequestMapping("/private.do")
 	public String privateSite(HttpServletRequest request, Model model) {
@@ -52,7 +57,7 @@ public class PrivateController {
 	@RequestMapping(value="/private/register.do", method=RequestMethod.POST)
 	public String privateRegisterDiary(DiaryDTO diarydto) {
 		logger.info("Request data : {}", diarydto);
-		int insertResult = 0;
+		int insertResult = diaryTr.insertData(diarydto);
 		
 		if(insertResult == 0) {
 			return "error_common";

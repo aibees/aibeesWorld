@@ -4,7 +4,15 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
+		<!-- VO alias -->
 		<typeAlias type="com.aibees.world.user.model.vo.UserDTO" alias="userDTO"/>
 		<typeAlias type="com.aibees.world.user.model.vo.UserVO" alias="userVO"/>
+		<typeAlias type="com.aibees.world.secret.model.vo.DiaryDTO" alias="diaryDTO"/>
+		<typeAlias type="com.aibees.world.secret.model.vo.DiaryVO" alias="diaryVO"/>
+		
+		<!-- structure alias -->
+		<typeAlias type="java.util.List" alias="list" />
+		<typeAlias type="java.util.Map" alias="map" />
+		<typeAlias type="java.util.HashMap" alias="hmap" />
 	</typeAliases>
 </configuration>

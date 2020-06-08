@@ -1,5 +1,7 @@
 package com.aibees.world.user.ctrl;
 
+import java.util.HashMap;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -16,11 +18,15 @@ import com.aibees.world.user.model.vo.UserDTO;
 import com.aibees.world.user.model.vo.UserVO;
 import com.aibees.world.user.service.UserLoginService;
 import com.aibees.world.user.service.UserUpdateService;
+import com.aibees.world.utils.BeanUtils;
+import com.aibees.world.utils.ObjectUtils;
 
 @Controller
 public class UserController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+	
+	private ObjectUtils objectUtils = (ObjectUtils)BeanUtils.getBean("ObjectUtils");
 	
 	@Resource(name="UserLoginService")
 	private UserLoginService loginService;
@@ -35,11 +41,15 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/login.do", method=RequestMethod.POST)
-	public String UserLogin(UserDTO userdto, Model model) {
+	public @ResponseBody HashMap<String, Object> UserLogin(HttpServletRequest request, UserDTO userdto) {
 		Object result = loginService.LoginService(userdto);
 		logger.info("login result : {}", result);
-		model.addAttribute("loginUserModel", result);
-		return "redirect:main.do";
+		
+		// Login Success시, Session 넣어주기
+		HttpSession session = request.getSession(true);
+		session.setAttribute("loginUser", result);
+		
+		return objectUtils.UserVoMapping((UserVO)result);
 	}
 	
 	@RequestMapping("/signUp.do")
@@ -52,7 +62,6 @@ public class UserController {
 	public String UserRegister(UserVO uservo, Model model) {
 		logger.debug("logger debug test");
 		logger.info("Debug : register uservo data : {}", uservo);
-		System.out.println("shit");
 		int updateResult = updateService.InsertService(uservo);
 		System.out.println("updateResult : " + updateResult);
 		if(updateResult == 1) {
