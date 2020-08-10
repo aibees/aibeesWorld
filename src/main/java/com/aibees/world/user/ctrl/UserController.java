@@ -60,10 +60,16 @@ public class UserController {
 	
 	@RequestMapping(value="/registerPost.do", method=RequestMethod.POST)
 	public String UserRegister(UserVO uservo, Model model) {
+		// uservo phoneNum replace "-" to none
+		String phoneTrim = uservo.getPhone().replace("-", "");
+		uservo.setPhone(phoneTrim);
 		logger.debug("logger debug test");
 		logger.info("Debug : register uservo data : {}", uservo);
+		
+		// insert Transaction
 		int updateResult = updateService.InsertService(uservo);
 		System.out.println("updateResult : " + updateResult);
+		
 		if(updateResult == 1) {
 			// normal result : Success
 			model.addAttribute("resultFlag", "success");

@@ -27,10 +27,16 @@ public class UserDaoImpl implements UserDao {
 	}
 	
 	@Override
-	public int insertDao(Object obj) {
-		logger.debug(obj.toString());
+	public int insertMainDao(Object obj) { // USER TABLE INSERT
 		int result = session.insert(PREFIX + ".insert", obj);
-		logger.debug("session result : {}", result);
+		logger.info("session result : {}", result);
+		return result;
+	}
+	
+	@Override
+	public int insertDetailDao(Object obj) { // USER_DETAIL TABLE INSERT
+		int result = session.insert(PREFIX + ".insertDetail", obj);
+		logger.info("session detail result : {}", result);
 		return result;
 	}
 }

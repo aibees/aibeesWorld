@@ -130,9 +130,9 @@
         </div>
         <div class="col-lg-3 col-md-6 text-center">
           <div class="mt-5">
-            <i class="fas fa-4x fa-laptop-code text-primary mb-4"></i>
-            <h3 class="h4 mb-2">Up to Date</h3>
-            <p class="text-muted mb-0">All dependencies are kept current to keep things fresh.</p>
+            <a href="Laboratory.do"><i class="fas fa-4x fa-laptop-code text-primary mb-4"></i></a>
+            <h3 class="h4 mb-2">실험실</h3>
+            <p class="text-muted mb-0">여러 웹 기능을<br/>실험하는 공간</p>
           </div>
         </div>
         <div class="col-lg-3 col-md-6 text-center">

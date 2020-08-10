@@ -283,7 +283,7 @@
               </a>
               <ul class="treeview-menu">
                 <li><a id="dash_1" href="../layout/top-nav.html"><i class="fa fa-circle-o"></i>메모</a></li>
-                <li><a id="dash_2" href="../layout/boxed.html"><i class="fa fa-circle-o"></i>공지</a></li>
+                <li><a id="dash_2" href="../layout/boxed.html"><i class="fa fa-circle-o"></i>사진</a></li>
                 <li><a id="dash_3" href="../layout/fixed.html"><i class="fa fa-circle-o"></i>하고싶은 말</a></li>
                 <li><a id="dash_4" href="../layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i>유우머</a></li>
               </ul>

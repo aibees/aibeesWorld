@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html id="base" onLoad="setSize()">
 <head>
-<meta charset="UTF-8">
+<meta charset="EUC-KR">
 <title>AB LABORATORY : INTRO</title>
 
 <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>

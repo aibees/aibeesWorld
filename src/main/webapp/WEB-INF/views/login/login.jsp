@@ -122,7 +122,7 @@
 								  <td><b>비밀번호</b></td>
 								</tr>
 								<tr>
-								  <td><input type="text" id="pwd" name="pwd" /></td>
+								  <td><input type="password" id="pwd" name="pwd" /></td>
 								</tr>
 								<tr>
 								  <td><input type="button" id="loginBtn" value="LOGIN" onClick="loginAjax(); return false"/></td>

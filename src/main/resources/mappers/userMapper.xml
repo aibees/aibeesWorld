@@ -9,16 +9,40 @@
 <!-- where문에 조건 변수를 지정해 줄 때 setId()라는 setter함수를 property 변환을 적용하여 id 라고만 적는다. -->
 <mapper namespace="com.aibees.world.user">
 	<select id="login" parameterType="userDTO" resultType="userVO">
-		SELECT	ID
-			  , PWD
-			  , NAME
-			  , ROLE
-			  , CREATEDATE
-		FROM	user
-		WHERE	id = #{id}
+        SELECT A.ID, (AES_DECRYPT(UNHEX(B.PASSWORD), (SELECT OBJECT
+                                                        FROM abworld.COMMON
+                                                       WHERE TITLE = 'USER'
+                                                         AND SUBTITLE = 'LOGIN'
+                                                         AND ID = 'CIPHERS'))) AS PWD
+          FROM (SELECT ID
+          FROM abworld.USER
+         WHERE ID = #{id}) A
+    INNER JOIN abworld.USER_DETAIL B
+  ON A.ID = B.ID
+         WHERE B.PASSWORD = HEX(aes_encrypt(#{pwd}, (SELECT OBJECT
+                                                       FROM abworld.COMMON
+                                                      WHERE TITLE = 'USER'
+                                                        AND SUBTITLE = 'LOGIN'
+                                                        AND ID = 'CIPHERS')))
 	</select>
 	
 	<insert id="insert" parameterType="userVO">
-		INSERT INTO user(id, pwd, name, role, phone, createDate) VALUES (#{id}, #{pwd}, #{name}, #{role}, #{phone}, DEFAULT)
+		INSERT INTO USER (ID, NAME, PRIORITY, PHONE, ADDDATE)
+		          VALUES (#{id}, #{name}, #{role}, #{phone}, DEFAULT);
+	</insert>
+	
+	<insert id="insertDetail" parameterType="userVO">
+		INSERT INTO
+		       USER_DETAIL(ID,
+		                   PASSWORD
+		                  ) 
+		           VALUES (#{id},
+		                  HEX(AES_ENCRYPT(#{pwd}, (SELECT OBJECT
+  												    FROM abworld.COMMON
+ 												   WHERE TITLE = 'USER'
+   													 AND SUBTITLE = 'LOGIN'
+   												     AND ID = 'CIPHERS'))
+   							 )
+   						  );
 	</insert>
 </mapper>  

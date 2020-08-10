@@ -8,6 +8,7 @@
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
 	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
 		http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-4.3.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
@@ -15,6 +16,7 @@
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
@@ -27,6 +29,7 @@
 
 	<!-- <context:property-placeholder location="classpath:config/config.properties" /> -->
 
+	<!-- DB Datasource -->
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="${db.driverClass}"></property>
@@ -35,16 +38,42 @@
 		<property name="password" value="${db.password}"></property>
 	</bean>
 	
+	<!-- MyBatis config and Mappers setting -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
-        <!-- 3. resource?�� mybatis-config.xml 만들�? 추�??���? -->
         <property name="configLocation" value="classpath:mybatis-config.xml" />
-		<!-- 4. resource?�� mappers ?��?��?��리�?? 만들�? 추�??���? mybatis dqm -->
         <property name="mapperLocations" value="classpath:mappers/**/*Mapper.xml" />
    	</bean>
    	
-   	<!-- 6. @repository ?��?�� ?��존성 주입?�� ?��?�� ?��?�� -->
+   	<!-- Multipart(Image, Video, Files, ETC) -->
+   	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+   		<property name="maxUploadSize" value="100000000"></property>
+   		<property name="maxInMemorySize" value="100000000"></property>
+   	</bean>
+   	
+   	<!-- 6. @repository sql Session bean -->
     <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
 	</bean>
+	
+	<!-- Service TransactionManager Bean Setting -->
+	<bean id="TransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	  	<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<!-- transaction AOP Setting -->
+	<tx:advice id="txAdvice" transaction-manager="TransactionManager">
+	  <tx:attributes>
+	    <tx:method name="Insert*" rollback-for="Exception" />
+	    <tx:method name="Delete*" rollback-for="Exception" />
+	    <tx:method name="Update*" rollback-for="Exception" />
+	  </tx:attributes>
+	</tx:advice>
+	
+	<aop:config>
+		<aop:pointcut id="transactionPointcut" expression="execution(public void Insert*(..))" />
+		<aop:pointcut id="transactionPointcut" expression="execution(public void Update*(..))" />
+		<aop:pointcut id="transactionPointcut" expression="execution(public void Delete*(..))" />
+		<aop:advisor  id="transactionAdvisor" pointcut-ref="transactionPointcut" advice-ref="txAdvice"/>
+	</aop:config>
 </beans>

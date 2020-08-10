@@ -98,6 +98,16 @@
 			document.getElementById('trIdCheck').style.display = 'block';
 		}
 		
+		const onlyNumber = function(event) {
+			var keyCode = event.keyCode;
+			
+			if((keyCode >= 48) && (keyCode <= 57)) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
 		
 		const setPhoneFunc = function() {
 			//regex
@@ -155,12 +165,12 @@
 							  <td>전화번호<br/><small>전화 안걸거니까 안심하세요.</small></td>
 							</tr>
 							<tr>
-							  <td><input id="phone" class="phoneEdit" type="tel" name="phone" value="" onfocusout="setPhoneFunc()"/></td>
+							  <td><input id="phone" class="phoneEdit" type="tel" name="phone" value="" maxlength="11" onKeyPress="return onlyNumber(event);" onChange="setPhoneFunc()"/></td>
 							</tr>
 							<tr>
 							  <td><input type="submit" id="signupBtn" value="REGISTER"/></td>
 							</tr>
-							<input type="hidden" name="role" value="visited" />
+							<input type="hidden" name="role" value="visit" />
 						</table>
 					</form>
 				</div>
