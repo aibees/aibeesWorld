@@ -22,5 +22,16 @@ public class LabController {
 		logger.info("into the Laboratory");
 		return "test/labIntro";
 	}
+
+
+	@RequestMapping("labD.do")
+	public String D_lab() {
+		return "test/labD";
+	}
+	
+	@RequestMapping("labJ.do")
+	public String J_lab() {
+		return "test/labJ";
+	}
 	
 }

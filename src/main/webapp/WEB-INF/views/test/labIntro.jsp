@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-<html id="base" onLoad="setSize()">
+<html id="base">
 <head>
 <meta charset="EUC-KR">
 <title>AB LABORATORY : INTRO</title>
@@ -13,13 +13,14 @@
 html {
 	background-color: #000;
 	display: inline-block;
+	height: 100%;
 }
 
 body {
 	margin: 30px;
 	display: block;
-	height: auto;
-	width: auto;
+	height: 100%;
+	width: 100%;
 }
 
 /* class css setting */
@@ -62,13 +63,13 @@ body {
 
 /* element id setting */
 </style>
-<body onLoad="startLoading()">
+<body>
 	<div class="container">
 		<div id="daeun">
-			<div id="daeunDiv"></div>
+			<a href="/labD.do"><div id="daeunDiv"></div></a>
 		</div>
 		<div id="junseo">
-			<div id="junseoDiv"></div>
+			<a href="/labJ.do"><div id="junseoDiv"></div></a>
 		</div>
 	</div>
 </body>
@@ -90,14 +91,6 @@ body {
 		$(this).css("opacity", "65%");
 	})
 	
-	$("#daeunDiv").onClick
-
-	function setSize() {
-		$('body').setAttribute("height", $(window).Width() - 100)
-	}
 	
-	function startLoading() {
-		
-	}
 </script>
 </html>
