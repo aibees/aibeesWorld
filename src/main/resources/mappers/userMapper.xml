@@ -13,9 +13,17 @@
                                                         FROM abworld.COMMON
                                                        WHERE TITLE = 'USER'
                                                          AND SUBTITLE = 'LOGIN'
-                                                         AND ID = 'CIPHERS'))) AS PWD
-          FROM (SELECT ID
-          FROM abworld.USER
+                                                         AND ID = 'CIPHERS'))) AS PWD,
+               A.NAME,
+               A.ROLE,
+               A.PHONENUM AS PHONENUM,
+               A.ADDDATE  AS CREATEDATE
+          FROM (SELECT U.ID,
+					   U.NAME,
+                       U.ROLE,
+                       U.PHONENUM,
+                       U.ADDDATE
+          FROM abworld.USER U
          WHERE ID = #{id}) A
     INNER JOIN abworld.USER_DETAIL B
   ON A.ID = B.ID
@@ -26,8 +34,14 @@
                                                         AND ID = 'CIPHERS')))
 	</select>
 	
+	<select id="check" parameterType="string" resultType="string">
+	    SELECT ID
+	      FROM abworld.USER
+	     WHERE ID = #{id}
+	</select>
+	
 	<insert id="insert" parameterType="userVO">
-		INSERT INTO USER (ID, NAME, PRIORITY, PHONE, ADDDATE)
+		INSERT INTO USER (ID, NAME, ROLE, PHONENUM, ADDDATE)
 		          VALUES (#{id}, #{name}, #{role}, #{phone}, DEFAULT);
 	</insert>
 	

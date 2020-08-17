@@ -90,12 +90,84 @@
 	</style>
 
 	<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript">
+	<body>
+		<div class="mainContainer">
+			<div class="loginFormContainer">
+				<div class="title">
+					<a href="/main.do"><h1>AB WORLD</h1></a>
+					<h2>- REGISTER -</h2>
+				</div>
+				<hr>
+				<div class="loginForm">
+					<h2>REGISTER PAGE</h2>
+					<form name="registerForm" id="registerForm" method="post" action="/registerPost.do">
+						<table >
+							<tr>
+							  <td>하고싶은 아이디</td>
+							</tr>
+							<tr>
+							  <td><input id="idInput" type="text" name="id" onChange="idCheckFunc()"/></td>
+							</tr>
+							<tr id="trIdCheck">
+							  <td><span id="idCheck" style="text-align: center;margin: auto;"></span></td>
+							</tr>
+							<tr>
+							  <td><small>아이디와는 다른</small><br/>비밀번호</td>
+							</tr>
+							<tr>
+							  <td><input type="password" name="pwd" /></td>
+							</tr>
+							<tr>
+							  <td>이름<br/><small>( 별명 말구 실명으로 해주세요 )</small></td>
+							</tr>
+							<tr>
+							  <td><input type="text" name="name" /></td>
+							</tr>
+							<tr>
+							  <td>전화번호<br/><small>전화 안걸거니까 안심하세요.</small></td>
+							</tr>
+							<tr>
+							  <td><input id="phone" class="phoneEdit" type="tel" name="phone" value="" maxlength="11" onKeyPress="return onlyNumber(event);" onChange="setPhoneFunc()"/></td>
+							</tr>
+							<tr>
+							  <td><input type="submit" id="signupBtn" value="REGISTER"/></td>
+							</tr>
+							<input type="hidden" name="role" value="visit" />
+						</table>
+					</form>
+				</div>
+			</div>
+		</div>
+		
+			<script type="text/javascript">
 	
 		const idCheckFunc = function() {
-			const idText = $('#idInput').val()
-			document.getElementById('idCheck').innerHTML = ("<smaller>" + idText + "는<br/>사용 가능한 아이디 입니다.<br/>지금 이 기능은 무용지물<smaller>")
-			document.getElementById('trIdCheck').style.display = 'block';
+			const idText = $('#idInput').val();
+			
+			$.ajax({
+					cache: false,
+					url: "idCheck.do",
+					type: 'POST',
+					data: {
+						id: idText
+					},
+					async: true,
+					success: function(data) {
+						if(data == 0) { // no data: 회원가입 가능
+							document.getElementById('idCheck').innerHTML = ("<smaller>" + idText + "는<br/>사용 가능한 아이디 입니다.</smaller>")
+							document.getElementById('trIdCheck').style.display = 'block';
+						}
+						else { // exist data: 중복된 아이디 
+							document.getElementById('idCheck').innerHTML = ("<smaller>이미 사용중인 아이디 입니다.</smaller>")
+							document.getElementById('trIdCheck').style.display = 'block';
+						    document.getElementById('trIdCheck').style.color = 'red';
+							$('#idInput').val('');
+						}
+					},
+					error: function(xhr, status) {
+						alert("error")
+					}
+			 })
 		}
 		
 		const onlyNumber = function(event) {
@@ -128,53 +200,5 @@
 			$('#phone').val(phonearr[0]+"-"+phonearr[1]+"-"+phonearr[2])
 		}
 	</script>
-	<body>
-		<div class="mainContainer">
-			<div class="loginFormContainer">
-				<div class="title">
-					<a href="/main.do"><h1>AB WORLD</h1></a>
-					<h2>- REGISTER -</h2>
-				</div>
-				<hr>
-				<div class="loginForm">
-					<h2>REGISTER PAGE</h2>
-					<form name="registerForm" id="registerForm" method="post" action="/registerPost.do">
-						<table >
-							<tr>
-							  <td>하고싶은 아이디</td>
-							</tr>
-							<tr>
-							  <td><input id="idInput" type="text" name="id" onfocusout="idCheckFunc()"/></td>
-							</tr>
-							<tr id="trIdCheck">
-							  <td><span id="idCheck" style="text-align: center;margin: auto;"></span></td>
-							</tr>
-							<tr>
-							  <td><small>아이디와는 다른</small><br/>비밀번호</td>
-							</tr>
-							<tr>
-							  <td><input type="password" name="pwd" /></td>
-							</tr>
-							<tr>
-							  <td>이름<br/><small>( 별명 말구 실명으로 해주세요 )</small></td>
-							</tr>
-							<tr>
-							  <td><input type="text" name="name" /></td>
-							</tr>
-							<tr>
-							  <td>전화번호<br/><small>전화 안걸거니까 안심하세요.</small></td>
-							</tr>
-							<tr>
-							  <td><input id="phone" class="phoneEdit" type="tel" name="phone" value="" maxlength="11" onKeyPress="return onlyNumber(event);" onChange="setPhoneFunc()"/></td>
-							</tr>
-							<tr>
-							  <td><input type="submit" id="signupBtn" value="REGISTER"/></td>
-							</tr>
-							<input type="hidden" name="role" value="visit" />
-						</table>
-					</form>
-				</div>
-			</div>
-		</div>
 	</body>
 </html>

@@ -17,4 +17,8 @@ public class UserLoginServiceImpl implements UserLoginService {
 		return dao.loginDao(obj);
 	}
 	
+	@Override
+	public Object IdCheckService(String id) {
+		return dao.idCheckDao(id);
+	}
 }

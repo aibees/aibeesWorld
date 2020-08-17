@@ -15,6 +15,8 @@ public class ObjectUtils {
 		result.put("role", userVo.getRole());
 		result.put("phone", userVo.getPhone());
 		
+		System.out.println(result);
+		
 		return result;
 	}
 }

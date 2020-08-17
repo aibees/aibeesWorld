@@ -25,6 +25,12 @@ public class UserDaoImpl implements UserDao {
 		logger.info("session Query result : {}", result);
 		return result;
 	}
+
+	@Override
+	public Object idCheckDao(String id) {
+		Object result = session.selectOne(PREFIX + ".check", id);
+		return result;
+	}
 	
 	@Override
 	public int insertMainDao(Object obj) { // USER TABLE INSERT

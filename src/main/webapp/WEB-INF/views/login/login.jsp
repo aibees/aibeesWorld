@@ -116,13 +116,13 @@
 								  <td><b>아이디</b></td>
 								</tr>
 								<tr>
-								  <td><input type="text" id="id" name="id" /></td>
+								  <td><input type="text" id="id" name="id" onKeyDown="javascript:if(event.keyCode==13) {loginAjax(); return;}" /></td>
 								</tr>
 								<tr>
 								  <td><b>비밀번호</b></td>
 								</tr>
 								<tr>
-								  <td><input type="password" id="pwd" name="pwd" /></td>
+								  <td><input type="password" id="pwd" name="pwd" onKeyDown="javascript:if(event.keyCode==13) {loginAjax(); return;}" /></td>
 								</tr>
 								<tr>
 								  <td><input type="button" id="loginBtn" value="LOGIN" onClick="loginAjax(); return false"/></td>
@@ -133,7 +133,7 @@
 					<p></p>
 					<div class="signService">
 						<div class="forgot">
-							<a href="/login/forgotted.do">ID/PW를 알려주세요</a>
+							<a href="/login/forgotted.do">ID/PW 찾기</a>
 						</div>
 						<div class="signUp">
 							<a href="/signUp.do">회원가입</a>
@@ -148,11 +148,27 @@
 				return this.replace(/^\s+|\s+$/g,"");
 			}
 		
+			function press(e) {
+				if(e.keyCode == 13) {
+					loginAjax();
+				}
+			}
+			
 			function loginAjax() {
 				const formData = $("#loginForm").serialize();
 				
 				const input_id = $('#id').val();
 				const input_pw = $('#pwd').val();
+				
+				if(input_id.length == 0) {
+					alert("아이디는 필수입력사항입니다.");
+					return;
+				}
+				
+				if(input_pw.length == 0) {
+					alert("비밀번호는 필수입력사항입니다.");
+					return;
+				}
 				
 				$.ajax({
 					cache: false,
